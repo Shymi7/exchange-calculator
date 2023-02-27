@@ -1,0 +1,59 @@
+body {
+    font-family: Verdana, serif;
+}
+
+#main-container {
+    width: 25vw;
+    min-width: 300px;
+
+    padding: 1rem;
+}
+
+.input-container {
+    margin: 1.5rem 0;
+}
+
+.input-frame {
+    border: solid 1px #5e5e5e;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+
+    padding: 0.5rem;
+}
+
+.input-flag-container {
+    width: 10%;
+    height: fit-content;
+    overflow: hidden;
+    border: solid 1px #5e5e5e;
+    border-radius: 2px;
+}
+
+.input-flag-container img {
+    display: block;
+}
+
+.input-currency {
+    font-size: 0.8rem;
+}
+
+.input-frame input {
+    appearance: none;
+    -webkit-appearance: none;
+    all: unset;
+
+    width: 70%;
+    margin: 0 1rem;
+
+
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
