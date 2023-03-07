@@ -1,4 +1,3 @@
-
 function isInputValid(input: string): boolean {
     const decimalDigitsLimit = 2;
     const maxNumber = 999999999.99; //greatest number that can be calculated
@@ -54,44 +53,4 @@ function convertCurrency(mode: 'fromGBPtoPLN' | 'fromPLNtoGBP', inputValue: numb
     return Number(result.toFixed(decimalDigits));
 }
 
-
-const exchangeRate = receiveExchangeRateFromAPI('gbp')
-    .then((result: number)=>{
-        document.querySelector<HTMLInputElement>('#exchange-rate-value')!.innerText = result.toFixed(2);
-        return result;
-    });
-
-const sendInput = document.querySelector<HTMLInputElement>('#send-input')!;
-const receiveInput = document.querySelector<HTMLInputElement>('#receive-input')!;
-
-
-sendInput.addEventListener('input', async () => {
-    const value = sendInput.value
-    console.log(value);
-    if (isInputValid(value)) {
-        document.querySelector<HTMLInputElement>('#send-input-frame')!
-            .style.backgroundColor = '#FFFFFFFF';
-
-        receiveInput.value = String(
-            convertCurrency('fromGBPtoPLN', Number(value), await exchangeRate));
-
-    } else {
-        document.querySelector<HTMLInputElement>('#send-input-frame')!
-            .style.backgroundColor = '#FF6B6BFF';
-    }
-})
-
-receiveInput.addEventListener('input', async () => {
-    const value = receiveInput.value
-    if (isInputValid(value)) {
-        document.querySelector<HTMLInputElement>('#receive-input-frame')!
-            .style.backgroundColor = '#FFFFFFFF';
-
-        sendInput.value = String(
-            convertCurrency('fromPLNtoGBP', Number(value), await exchangeRate));
-
-    } else {
-        document.querySelector<HTMLInputElement>('#receive-input-frame')!
-            .style.backgroundColor = '#FF6B6BFF';
-    }
-})
+export {isInputValid, receiveExchangeRateFromAPI, convertCurrency};

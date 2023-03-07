@@ -8,6 +8,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.convertCurrency = exports.receiveExchangeRateFromAPI = exports.isInputValid = void 0;
 function isInputValid(input) {
     const decimalDigitsLimit = 2;
     const maxNumber = 999999999.99; //greatest number that can be calculated
@@ -28,6 +30,7 @@ function isInputValid(input) {
     //return true if everything is ok
     return true;
 }
+exports.isInputValid = isInputValid;
 //how much PLN is worth 1 unit of given currency
 function receiveExchangeRateFromAPI(currency = 'gbp') {
     return __awaiter(this, void 0, void 0, function* () {
@@ -45,6 +48,7 @@ function receiveExchangeRateFromAPI(currency = 'gbp') {
         }
     });
 }
+exports.receiveExchangeRateFromAPI = receiveExchangeRateFromAPI;
 function convertCurrency(mode, inputValue, exchangeRate) {
     const decimalDigits = 2;
     //calculating value
@@ -52,35 +56,4 @@ function convertCurrency(mode, inputValue, exchangeRate) {
     //formatting result to number with two decimal digits
     return Number(result.toFixed(decimalDigits));
 }
-const exchangeRate = receiveExchangeRateFromAPI('gbp')
-    .then((result) => {
-    document.querySelector('#exchange-rate-value').innerText = result.toFixed(2);
-    return result;
-});
-const sendInput = document.querySelector('#send-input');
-const receiveInput = document.querySelector('#receive-input');
-sendInput.addEventListener('input', () => __awaiter(void 0, void 0, void 0, function* () {
-    const value = sendInput.value;
-    console.log(value);
-    if (isInputValid(value)) {
-        document.querySelector('#send-input-frame')
-            .style.backgroundColor = '#FFFFFFFF';
-        receiveInput.value = String(convertCurrency('fromGBPtoPLN', Number(value), yield exchangeRate));
-    }
-    else {
-        document.querySelector('#send-input-frame')
-            .style.backgroundColor = '#FF6B6BFF';
-    }
-}));
-receiveInput.addEventListener('input', () => __awaiter(void 0, void 0, void 0, function* () {
-    const value = receiveInput.value;
-    if (isInputValid(value)) {
-        document.querySelector('#receive-input-frame')
-            .style.backgroundColor = '#FFFFFFFF';
-        sendInput.value = String(convertCurrency('fromPLNtoGBP', Number(value), yield exchangeRate));
-    }
-    else {
-        document.querySelector('#receive-input-frame')
-            .style.backgroundColor = '#FF6B6BFF';
-    }
-}));
+exports.convertCurrency = convertCurrency;
