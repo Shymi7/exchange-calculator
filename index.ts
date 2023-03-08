@@ -10,7 +10,7 @@ function isInputValid(input: string): boolean {
     if (isNaN(inputAsNumber))//check if input is a number
         return false;
 
-    if (inputAsNumber <= 0)//check if input isn't lesser than 0
+    if (inputAsNumber < 0)//check if input isn't lesser than 0
         return false;
 
     if (inputAsNumber > maxNumber)//check if input isn't too big
@@ -30,7 +30,6 @@ function isInputValid(input: string): boolean {
 //how much PLN is worth 1 unit of given currency
 async function receiveExchangeRateFromAPI(currency: string = 'gbp'): Promise<number> {
     const urlToApi = 'http://api.nbp.pl/api/exchangerates/rates/a/gbp/?format=json';
-    console.log('asdfasdf');
     try {
         //receiving data from API
         const response = await fetch(urlToApi);
@@ -55,6 +54,7 @@ function convertCurrency(mode: 'fromGBPtoPLN' | 'fromPLNtoGBP', inputValue: numb
 }
 
 
+
 const exchangeRate = receiveExchangeRateFromAPI('gbp')
     .then((result: number)=>{
         document.querySelector<HTMLInputElement>('#exchange-rate-value')!.innerText = result.toFixed(2);
@@ -67,7 +67,6 @@ const receiveInput = document.querySelector<HTMLInputElement>('#receive-input')!
 
 sendInput.addEventListener('input', async () => {
     const value = sendInput.value
-    console.log(value);
     if (isInputValid(value)) {
         document.querySelector<HTMLInputElement>('#send-input-frame')!
             .style.backgroundColor = '#FFFFFFFF';

@@ -6,7 +6,7 @@ body {
     width: 25vw;
     min-width: 300px;
 
-    padding: 1rem;
+    margin: 3rem;
 }
 
 .input-container {
@@ -48,8 +48,14 @@ body {
 
     width: 70%;
     margin: 0 1rem;
+}
 
+.bold{
+    font-weight: bold;
+}
 
+#exchange-rate-container{
+    margin: 0 auto 1.5rem;
 }
 
 input::-webkit-outer-spin-button,

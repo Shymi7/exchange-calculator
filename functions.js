@@ -18,7 +18,7 @@ function isInputValid(input) {
     );
     if (isNaN(inputAsNumber)) //check if input is a number
         return false;
-    if (inputAsNumber <= 0) //check if input isn't lesser than 0
+    if (inputAsNumber < 0) //check if input isn't lesser than 0
         return false;
     if (inputAsNumber > maxNumber) //check if input isn't too big
         return false;
@@ -35,7 +35,6 @@ exports.isInputValid = isInputValid;
 function receiveExchangeRateFromAPI(currency = 'gbp') {
     return __awaiter(this, void 0, void 0, function* () {
         const urlToApi = 'http://api.nbp.pl/api/exchangerates/rates/a/gbp/?format=json';
-        console.log('asdfasdf');
         try {
             //receiving data from API
             const response = yield fetch(urlToApi);

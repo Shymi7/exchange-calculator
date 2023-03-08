@@ -31,7 +31,6 @@ describe('isInputValid function ', () => {
 });
 describe('convertCurrency function returns', () => {
     const exchangeRate = 5.28;
-    const mode = 'fromGBPtoPLN';
     //note that it returns rounded value
     test(' valid value of exchanging GBP to PLN', () => {
         expect((0, functions_1.convertCurrency)('fromGBPtoPLN', 56, exchangeRate)).toBe(295.68);
@@ -39,6 +38,4 @@ describe('convertCurrency function returns', () => {
     test(' valid value of exchanging PLN to GBP ', () => {
         expect((0, functions_1.convertCurrency)('fromPLNtoGBP', 23.5, exchangeRate)).toBe(4.45);
     });
-});
-describe('receiveExchangeValueFromAPI function returns', () => {
 });

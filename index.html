@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="./index.js" defer></script>
-<!--    <script type="module" src="functions.ts"></script>-->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,7 +17,7 @@
                 <div class="input-flag-container">
                     <img src="icons/gb.svg" alt="">
                 </div>
-                <input type="number" id="send-input">
+                <input type="number" required value="0.00" id="send-input">
                 <span class="input-currency">GBP</span>
             </div>
         </div>
@@ -29,7 +28,7 @@
                 <div class="input-flag-container">
                     <img src="icons/pl.svg" alt="">
                 </div>
-                <input type="number" id="receive-input">
+                <input type="number" required value="0.00" id="receive-input">
                 <span class="input-currency">PLN</span>
             </div>
         </div>
@@ -41,8 +40,6 @@
         </div>
         <span class="bold">No transfer fee</span>
     </div>
-
-
 
 
 
