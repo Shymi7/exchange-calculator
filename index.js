@@ -60,7 +60,6 @@ const sendInput = document.querySelector('#send-input');
 const receiveInput = document.querySelector('#receive-input');
 sendInput.addEventListener('input', () => __awaiter(void 0, void 0, void 0, function* () {
     const value = sendInput.value;
-    console.log(value);
     if (isInputValid(value)) {
         document.querySelector('#send-input-frame')
             .style.backgroundColor = '#FFFFFFFF';
